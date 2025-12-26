@@ -1,11 +1,2 @@
 [build]
-builder = "nixpacks"
-
-[deploy]
-startCommand = "cd server && npm start"
-healthcheckPath = "/"
-healthcheckTimeout = 30
-
-[deploy.ports]
-port = 3000
-http = true
+builder = "dockerfile"
