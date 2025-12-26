@@ -64,7 +64,7 @@ const thumbnailsDir = path.join(__dirname, 'thumbnails');
 // Обслуживаем статические файлы
 app.use('/uploads', express.static(uploadsDir));
 app.use('/thumbnails', express.static(thumbnailsDir));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, './public')));
 
 // Настройка Multer для Railway (в памяти для ephemeral storage)
 const storage = multer.diskStorage({
@@ -382,7 +382,7 @@ app.get('/api/backup', authenticate, (req, res) => {
 
 // Обслуживание SPA - все остальные маршруты ведут на index.html
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 // Обработка ошибок
