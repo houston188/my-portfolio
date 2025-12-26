@@ -1,9 +1,6 @@
 FROM node:18-alpine
 WORKDIR /app
-COPY server/package*.json ./
-RUN npm ci --only=production
-COPY server/ ./server/
-COPY public/ ./public/
-COPY uploads/ ./uploads/
+COPY . .
+RUN npm install --production
 EXPOSE 3000
-CMD ["node", "server/server.js"]
+CMD ["node", "server.js"]
