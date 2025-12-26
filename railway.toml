@@ -3,9 +3,9 @@ builder = "nixpacks"
 buildCommand = "cd server && npm install"
 
 [deploy]
-startCommand = "node server/server.js"
-healthcheckPath = "/api/health"
-healthcheckTimeout = 60
+startCommand = "cd server && node server.js"
+healthcheckPath = "/"
+healthcheckTimeout = 30
 
 [deploy.ports]
 port = 3000
