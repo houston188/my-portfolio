@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое портфолио | Дизайнерские работы</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>PORTFOLIO</h1>
+            </div>
+            <div class="nav-links">
+                <button id="add-work-btn" class="nav-btn">
+                    <i class="fas fa-plus"></i> Добавить работу
+                </button>
+                <button id="admin-toggle" class="admin-btn">
+                    <i class="fas fa-lock"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основная сетка работ -->
+    <main class="main-content">
+        <div class="masonry-grid" id="works-grid">
+            <!-- Работы будут загружаться через JavaScript -->
+        </div>
+
+        <!-- Сообщение если работ нет -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+            <i class="fas fa-images"></i>
+            <h2>Портфолио пусто</h2>
+            <p>Добавьте свою первую работу, нажав кнопку "Добавить работу"</p>
+        </div>
+    </main>
+
+    <!-- Модальное окно просмотра работы -->
+    <div class="modal" id="image-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <!-- Кнопки навигации -->
+            <div class="modal-nav prev-area" id="prev-area">
+                <button class="nav-btn prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <div class="modal-nav next-area" id="next-area">
+                <button class="nav-btn next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Контейнер изображения -->
+            <div class="image-container" id="image-container">
+                <div class="blur-background" id="blur-background"></div>
+                <img class="modal-image" id="modal-image" alt="Просмотр работы">
+                <div class="image-info">
+                    <h2 id="image-title">Название работы</h2>
+                    <p id="image-description">Описание работы</p>
+                </div>
+            </div>
+
+            <!-- Кнопка закрытия -->
+            <button class="close-modal" id="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Панель добавления/редактирования работы -->
+    <div class="admin-panel" id="admin-panel">
+        <div class="admin-header">
+            <h3><i class="fas fa-plus"></i> Добавить работу</h3>
+            <button class="close-admin" id="close-admin">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="admin-content">
+            <form id="add-work-form">
+                <div class="form-group">
+                    <label for="work-title">Название работы *</label>
+                    <input type="text" id="work-title" placeholder="Введите название работы" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="work-description">Описание</label>
+                    <textarea id="work-description" placeholder="Опишите работу" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="work-image">Изображение *</label>
+                    <div class="file-upload">
+                        <input type="file" id="work-image" accept="image/*" required>
+                        <div class="file-info" id="file-info">Выберите файл...</div>
+                        <button type="button" class="browse-btn">
+                            <i class="fas fa-folder-open"></i> Обзор
+                        </button>
+                    </div>
+                    <div class="file-preview" id="file-preview"></div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary" id="submit-btn">
+                        <i class="fas fa-upload"></i> Загрузить работу
+                    </button>
+                    <button type="button" class="btn-secondary" id="cancel-btn">
+                        Отмена
+                    </button>
+                </div>
+            </form>
+
+            <div class="admin-section" id="works-management">
+                <h4><i class="fas fa-list"></i> Управление работами</h4>
+                <div class="works-list" id="admin-works-list">
+                    <!-- Список работ для управления -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомления -->
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
