@@ -51,7 +51,7 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Папки для статических файлов
 const uploadsDir = '/app/uploads';
-sed - i "54s|path.join(__dirname, 'thumbnails')|'/app/thumbnails'|" server.js
+const thumbnailsDir = path.join(__dirname, 'thumbnails');
 
 // Создаем папки если их нет
 [uploadsDir, thumbnailsDir].forEach(dir => {
